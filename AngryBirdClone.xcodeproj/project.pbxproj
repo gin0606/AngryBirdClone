@@ -25,6 +25,7 @@
 		5C8A69991824A4FE0078D539 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C8A69971824A4FE0078D539 /* InfoPlist.strings */; };
 		5C8A699B1824A4FE0078D539 /* AngryBirdCloneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C8A699A1824A4FE0078D539 /* AngryBirdCloneTests.m */; };
 		ACC1D54495ABE964CB1D36A5 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC1D3F8B0E61560A6104CE0 /* ground.png */; };
+		ACC1DD839F5F7A517473186B /* bird.png in Resources */ = {isa = PBXBuildFile; fileRef = ACC1D68A4A269C818E91A5C6 /* bird.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		5C8A69981824A4FE0078D539 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C8A699A1824A4FE0078D539 /* AngryBirdCloneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AngryBirdCloneTests.m; sourceTree = "<group>"; };
 		ACC1D3F8B0E61560A6104CE0 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
+		ACC1D68A4A269C818E91A5C6 /* bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bird.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				5C8A69871824A4FD0078D539 /* Images.xcassets */,
 				5C8A69711824A4FD0078D539 /* Supporting Files */,
 				ACC1D3F8B0E61560A6104CE0 /* ground.png */,
+				ACC1D68A4A269C818E91A5C6 /* bird.png */,
 			);
 			path = AngryBirdClone;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				5C8A69861824A4FD0078D539 /* Spaceship.png in Resources */,
 				5C8A697E1824A4FD0078D539 /* Main.storyboard in Resources */,
 				ACC1D54495ABE964CB1D36A5 /* ground.png in Resources */,
+				ACC1DD839F5F7A517473186B /* bird.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,6 +28,20 @@
         ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.frame.size];
         ground.physicsBody.dynamic = NO;
         [self addChild:ground];
+
+        SKSpriteNode *bird = [SKSpriteNode spriteNodeWithImageNamed:@"bird.png"];
+        bird.position = CGPointMake(50, 50);
+        bird.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:bird.frame.size];
+        [self addChild:bird];
+
+        SKNode *launchPad = [SKNode node];
+        launchPad.position = bird.position;
+        launchPad.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
+        launchPad.physicsBody.dynamic = NO;
+        [self addChild:launchPad];
+
+        SKPhysicsJointPin *pin = [SKPhysicsJointPin jointWithBodyA:bird.physicsBody bodyB:launchPad.physicsBody anchor:launchPad.position];
+        [self.physicsWorld addJoint:pin];
     }
     return self;
 }
