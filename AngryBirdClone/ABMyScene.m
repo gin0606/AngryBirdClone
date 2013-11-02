@@ -22,6 +22,12 @@
         helloPhysicsWorld.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
         helloPhysicsWorld.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:helloPhysicsWorld.frame.size];
         [self addChild:helloPhysicsWorld];
+
+        SKSpriteNode *ground = [SKSpriteNode spriteNodeWithImageNamed:@"ground.png"];
+        ground.position = CGPointMake(CGRectGetMidX(self.frame), 0);
+        ground.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ground.frame.size];
+        ground.physicsBody.dynamic = NO;
+        [self addChild:ground];
     }
     return self;
 }
