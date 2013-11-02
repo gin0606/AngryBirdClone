@@ -213,7 +213,7 @@
 				ORGANIZATIONNAME = gin0606;
 				TargetAttributes = {
 					5C8A698C1824A4FE0078D539 = {
-						TestTargetID = 5C8A69641824A4FD0078D539;
+						TestTargetID = 5C8A69641824A4FD0078D539 /* AngryBirdClone */;
 					};
 				};
 			};
