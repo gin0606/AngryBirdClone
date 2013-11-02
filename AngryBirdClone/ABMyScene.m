@@ -33,16 +33,8 @@
         self.bird = [SKSpriteNode spriteNodeWithImageNamed:@"bird.png"];
         self.bird.position = CGPointMake(50, 50);
         self.bird.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.bird.frame.size];
+        self.bird.physicsBody.dynamic = NO;
         [self addChild:self.bird];
-
-        SKNode *launchPad = [SKNode node];
-        launchPad.position = self.bird.position;
-        launchPad.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
-        launchPad.physicsBody.dynamic = NO;
-        [self addChild:launchPad];
-
-        SKPhysicsJointPin *pin = [SKPhysicsJointPin jointWithBodyA:self.bird.physicsBody bodyB:launchPad.physicsBody anchor:launchPad.position];
-        [self.physicsWorld addJoint:pin];
     }
     return self;
 }
@@ -52,12 +44,7 @@
     CGPoint touchPos = [touch locationInNode:self];
 
     if ([self.bird containsPoint:touchPos]) {
-        // birdを空中に留めていたjointを外す
-        [self.bird.physicsBody.joints enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            SKPhysicsJoint *joint = obj;
-            [joint.bodyB.node removeFromParent];
-            [self.physicsWorld removeJoint:joint];
-        }];
+        self.bird.physicsBody.dynamic = YES;
 
         // タッチ地点とbirdをくっつける
         self.mouseNode = [SKNode node];
