@@ -10,14 +10,23 @@
 
 @implementation ABMyScene
 
--(id)initWithSize:(CGSize)size {    
+- (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        SKLabelNode *helloSpriteKit = [SKLabelNode labelNodeWithFontNamed:@"HelveticaNeue"];
+        helloSpriteKit.text = @"Hello SpriteKit!";
+        helloSpriteKit.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+        [self addChild:helloSpriteKit];
 
+        SKLabelNode *helloPhysicsWorld = [SKLabelNode labelNodeWithFontNamed:@"HelveticaNeue"];
+        helloPhysicsWorld.text = @"Hello physics world!";
+        helloPhysicsWorld.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame));
+        helloPhysicsWorld.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:helloPhysicsWorld.frame.size];
+        [self addChild:helloPhysicsWorld];
     }
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 
 }
 
