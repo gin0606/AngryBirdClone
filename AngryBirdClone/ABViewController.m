@@ -22,7 +22,7 @@
     
     // Create and configure the scene.
     SKScene * scene = [ABMyScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.scaleMode = SKSceneScaleModeResizeFill;
     
     // Present the scene.
     [skView presentScene:scene];
