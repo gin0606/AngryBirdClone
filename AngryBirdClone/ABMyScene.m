@@ -8,9 +8,9 @@
 
 #import "ABMyScene.h"
 
-#define kShotPos CGPointMake(50, 50)
+#define kShotPos CGPointMake(50, 100)
 
-@interface ABMyScene ()
+@interface ABMyScene () <SKPhysicsContactDelegate>
 @property(nonatomic, strong) SKSpriteNode *bird;
 @property(nonatomic, strong) SKNode *mouseNode;
 @end
@@ -31,10 +31,21 @@
         [self addChild:ground];
 
         self.bird = [SKSpriteNode spriteNodeWithImageNamed:@"bird.png"];
-        self.bird.position = CGPointMake(50, 50);
+        self.bird.name = @"bird";
+        self.bird.position = kShotPos;
         self.bird.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.bird.frame.size];
         self.bird.physicsBody.dynamic = NO;
+        self.bird.physicsBody.contactTestBitMask = 1;
         [self addChild:self.bird];
+
+        SKSpriteNode *target = [SKSpriteNode spriteNodeWithImageNamed:@"target.png"];
+        target.name = @"target";
+        target.position = CGPointMake(CGRectGetMaxX(self.frame), CGRectGetMidY(self.frame));
+        target.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:target.frame.size];
+        target.physicsBody.contactTestBitMask = 1;
+        [self addChild:target];
+
+        self.physicsWorld.contactDelegate = self;
     }
     return self;
 }
@@ -91,12 +102,19 @@
     [self.mouseNode removeFromParent];
 
     // 発射角度計算して飛ばす
-    CGPoint p = CGPointMake(50 - self.mouseNode.position.x, 50 - self.mouseNode.position.y);
+    CGPoint shotPoint = kShotPos;
+    CGPoint p = CGPointMake(shotPoint.x - self.mouseNode.position.x, shotPoint.y - self.mouseNode.position.y);
     float radians = atan2f(p.y, p.x);
     CGPoint angle = CGPointMake(cosf(radians), sinf(radians));
 
     [self.bird.physicsBody applyForce:CGVectorMake(angle.x * 5000, angle.y * 5000)];
 }
 
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    if ([contact.bodyA.node.name isEqualToString:@"bird"]
+            && [contact.bodyB.node.name isEqualToString:@"target"]) {
+        [contact.bodyB.node removeFromParent];
+    }
+}
 
 @end
